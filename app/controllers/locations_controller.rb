@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  before_filter :prepare_form
+  
   # GET /locations
   # GET /locations.json
   def index
@@ -80,4 +82,12 @@ class LocationsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  private
+  
+    def prepare_form
+      @categories = Category.all
+      @neighborhoods = Neighborhood.all
+    end
+  
 end
